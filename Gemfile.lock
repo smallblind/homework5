@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    murmurhash3 (0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  murmurhash3
