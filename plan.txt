@@ -1,0 +1,63 @@
+Plan
+
+- Need an array of a certain number of elements that each contain a boolean 'hit' variable
+
+- Need a way to read over each word in a text file
+
+- Need a way to hash each function to a spot in the array. Multiple ways. 
+     - Murmur hash gem should be able to handle this
+
+- Need to read the word file through the text reader to put it into a bloom filter.
+
+
+
+- Don't need a database
+    - When the program runs just read the text file of words, and keeps it saved until the program is done
+
+
+What if we just have script that writes the bloom filter after reading the example file to a text file?
+    - Seems like a reasonable idea
+
+
+THINGS STILL TODO
+
+- Allow user to specify from the command line what file to filter
+  - Make need a rakefile for this?
+- Comment code correctly
+- Write build instructions
+  - Copy the bundler gem install instructions from our first project
+  - Explain how the command line takes a new file
+
+- Answer the following questions in an attached text file
+
+  - Find the error rate over the test paragraph when you set the length of your bit array to 200 and number of hash function to 10.
+
+  Literally every word in the test paragraph is a match. That translates to 5700 postive matches in test_paragraph.txt. This means that the error rate is as high as it can be.
+
+  - What happens if you increase the number of hash functions?
+
+  Increasing the number of Hash Functions increasing the likelyhood of finding an exact match, but if the length of the bit array isn't increased as well then it drastically increases the chance of false positives.
+
+  The experiments I ran on my bloom filter showed that the length of the bit array has a much stronger correlation to the number of false postives than the number of hash functions. For example look at this table
+
+  Bit Array Length: 10 Hash Functions: 1 Positive Matches: 5700
+  Bit Array Length: 100 Hash Functions: 1 Positive Matches: 5438 
+  Bit Array Length: 1000 Hash Functions: 1 Positive Matches: 969
+  Bit Array Length: 10,000 Hash Functions: 1 Positive Matches: 461
+  Bit Array Length: 100,000 Hash Functions: 1 Positive Matches: 459
+  Bit Array Length: 1,000,000 Hash Functions:1  Positive Matches: 459
+
+  Bit Array Length: 100 Hash Functions: 1 Positive Matches: 
+  Bit Array Length: 100 Hash Functions: 10 Positive Matches:  
+  Bit Array Length: 100 Hash Functions: 100 Positive Matches: 
+
+  - What is the error rate if you increase the bit array to length 1000 but reduce the number of hash functions to 5?
+
+  930 positive matches were found in test_paragraph.txt. This is much, much closer to the actual rate of occurences in the file.
+
+- Don't foget to include the filtered text file for the example paragraph in the submission
+
+
+
+
+   
